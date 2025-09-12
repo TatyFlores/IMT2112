@@ -109,6 +109,9 @@ int main(int argc, char** argv)
         f.close();
     }
 
+    MPI_Barrier(MPI_COMM_WORLD);
+    double t0 = MPI_Wtime();
+
     // Número fijo de iteraciones
     const int K = 50;
 
@@ -201,6 +204,28 @@ int main(int argc, char** argv)
     }
 
     delete[] A_local;
+
+    char host[MPI_MAX_PROCESSOR_NAME]; int len=0;
+    MPI_Get_processor_name(host, &len);
+    std::cout << "Rank " << rank << " en host " << host << "\n";
+
+    MPI_Barrier(MPI_COMM_WORLD);
+    double elapsed = MPI_Wtime() - t0;
+
+    // Guarda un csv en el rank 0
+    if (rank == 0) {
+        // crea encabezado si no existe (simple y suficiente)
+        {
+            std::ifstream chk("timings.csv");
+            if (!chk.good()) {
+                std::ofstream hdr("timings.csv");
+                hdr << "nrows,ncols,K,procs,time_s,scenario\n";
+            }
+        }
+        std::ofstream out("timings.csv", std::ios::app);
+        out << nrows << "," << ncols << "," << K << "," << size << ","
+            << std::fixed << elapsed << "," << "strong" << "\n"; // o "weak"
+    }
 
     MPI_Finalize();
 
