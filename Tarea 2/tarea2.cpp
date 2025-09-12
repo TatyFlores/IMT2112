@@ -43,7 +43,9 @@ int main(int argc, char** argv)
     const int q   = n / p;   // filas base por proceso
     const int rem = n % p;   // procesos que reciben una fila extra
 
-    const int my_nrows = (r < rem) ? (q + 1) : q;  // 
+    const int my_nrows = (r < rem) ? (q + 1) : q;  
+    // hay una cantidad rem que tienen una fila extra, por ello es q+1 filas
+    // si se cumple la cantidad rem, tiene q filas
 
     int my_firstrow;
     if (r < rem) {
