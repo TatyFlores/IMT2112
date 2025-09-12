@@ -196,8 +196,7 @@ int main(int argc, char** argv)
     // Error con respecto al valor propio máximo exacto (=10)
     if (rank == 0) {
         double err = std::fabs(mu - 10.0);
-        std::cout << "\n=== Punto 8 ===\n";
-        std::cout << "Valor propio estimado (mu): " << mu << "\n";
+        std::cout << "\nValor propio estimado (mu): " << mu << "\n";
         std::cout << "Error |mu - 10|: " << err << "\n";
     }
 
