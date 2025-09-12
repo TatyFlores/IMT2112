@@ -5,7 +5,7 @@ Este repositorio fue creado para almacenar el código procesado para las tareas 
 
 Algunos comandos útiles:
 * cd nombre_carpeta: es para moverse por los directorios
-* cd ..: es para devolverse una carpeta 
+* cd .. : es para devolverse una carpeta 
 * mkdir nombre_carpeta: es para crear una nueva carpeta
 * ls: es para ver los archivos que se encuentran en el directorio actual
 
