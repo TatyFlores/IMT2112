@@ -17,7 +17,7 @@ int main(int argc, char** argv)
     int nrows = 0, ncols = 0;
     if (rank == 0)
     {
-        std::ifstream file("matriz.txt");
+        std::ifstream file("matrix.txt");
         if (!file.is_open()) {
             std::cerr << "Unable to open file.'\n";
             MPI_Abort(MPI_COMM_WORLD, 1);
@@ -26,7 +26,14 @@ int main(int argc, char** argv)
         file.close();
     }
 
+    // Usamos Broadcast para pasar estos datos a todos los procesos
+    MPI_Bcast(&nrows, 1, MPI_INT, 0, MPI_COMM_WORLD); // Distribuye filas
+    MPI_Bcast(&ncols, 1, MPI_INT, 0, MPI_COMM_WORLD); // Distribuye columnas
+
+    std::cout << "Tamaño de la matriz" << std::endl;
     std::cout << "Filas: " << nrows << ", Columnas: " << ncols << std::endl;
+
+    
 
     MPI_Finalize();
 
