@@ -13,8 +13,12 @@
 echo "start script"
 date
 
+module purge
+module load gcc
+module load openmpi
+
 mpic++ tarea2.cpp
-time mpirun -np 8 a.out
+time mpirun -np 2 a.out
 
 echo "end script"
 date
