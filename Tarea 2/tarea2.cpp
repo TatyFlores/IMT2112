@@ -212,7 +212,7 @@ int main(int argc, char** argv)
     MPI_Barrier(MPI_COMM_WORLD);
     double elapsed = MPI_Wtime() - t0;
 
-    // Guarda un csv en el rank 0
+    // Guarda un csv en el rank
     if (rank == 0) {
         // crea encabezado si no existe (simple y suficiente)
         {
