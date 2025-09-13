@@ -60,7 +60,7 @@ int main(int argc, char** argv)
     std::cout << "Rank " << rank
             << "\nCantidad de filas: " << cant_rows[rank]
             << "\nInicio primera fila: " << indice_rows[rank]
-            << "\nFin ultima fila: " << cant_rows[rank] + indice_rows[rank] <<"\n\n";
+            << "\nFin ultima fila: " << cant_rows[rank] + indice_rows[rank] - 1 <<"\n\n";
 
     std::vector<double> b0(static_cast<size_t>(my_nrows), 1.0);
 
