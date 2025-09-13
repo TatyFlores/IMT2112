@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/usr/bin/env python3
 
 # Nombre del trabajo
 #SBATCH --job-name=IMT2112
