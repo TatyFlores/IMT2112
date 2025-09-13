@@ -12,7 +12,7 @@ int main(int argc, char** argv)
     MPI_Init(&argc, &argv);
 
     int size, rank;
-    MPI_Comm_size(MPI_COMM_WORLD, &size);  // número de procesos (p)
+    MPI_Comm_size(MPI_COMM_WORLD, &size);  // numero de procesos (p)
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);  // id del proceso (r)
 
     // Queremos leer las dimensiones del archivo
@@ -49,7 +49,7 @@ int main(int argc, char** argv)
             // hay una cantidad rem que tienen una fila extra, por ello es q+1 filas
             // si se cumple la cantidad rem, tiene q filas
 
-        // desde qué índice global empieza cada rank i (0-based)
+        // desde que indice global empieza cada rank i (0-based)
         indice_rows[0] = 0;
         for (int i = 1; i < size; ++i)
             indice_rows[i] = indice_rows[i-1] + cant_rows[i-1];
@@ -60,11 +60,11 @@ int main(int argc, char** argv)
     std::cout << "Rank " << rank
             << "\nCantidad de filas: " << cant_rows[rank]
             << "\nInicio primera fila: " << indice_rows[rank]
-            << "\nFin última fila: " << cant_rows[rank] + indice_rows[rank] <<"\n\n";
+            << "\nFin ultima fila: " << cant_rows[rank] + indice_rows[rank] <<"\n\n";
 
     std::vector<double> b0(static_cast<size_t>(my_nrows), 1.0);
 
-    // Se utilizó apoyo de ChatGPT para considerar los casos donde hubiera errores eventualmente
+    // Se utilizo apoyo de ChatGPT para considerar los casos donde hubiera errores eventualmente
 
     const long long my_elems = 1LL * my_nrows * ncols;
     double* A_local = nullptr;
@@ -112,7 +112,7 @@ int main(int argc, char** argv)
     MPI_Barrier(MPI_COMM_WORLD);
     double t0 = MPI_Wtime();
 
-    // Número fijo de iteraciones
+    // Numero fijo de iteraciones
     const int K = 50;
 
     std::vector<int> counts_rows(size), displs_rows(size);
@@ -191,7 +191,7 @@ int main(int argc, char** argv)
         y_local[i] = acc;
     }
 
-    // mu = b^T y  (b ya quedó normalizado al final de la última iteración)
+    // mu = b^T y  (b ya quedo normalizado al final de la última iteración)
     double local_dot = 0.0, mu = 0.0;
     for (int i = 0; i < my_nrows; ++i) local_dot += b0[i] * y_local[i];
     MPI_Allreduce(&local_dot, &mu, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
