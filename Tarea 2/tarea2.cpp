@@ -119,8 +119,8 @@ int main(int argc, char** argv)
     {
         int q   = nrows / size;
         int rem = nrows % size;
-        for (int i = 0; i < size; ++i) counts_rows[i] = (i < rem) ? (q + 1) : q;
-        displs_rows[0] = 0;
+        for (int i = 0; i < size; ++i) cant_rows[i] = (i < rem) ? (q + 1) : q;
+        indice_rows[0] = 0;
         for (int i = 1; i < size; ++i) displs_rows[i] = displs_rows[i-1] + counts_rows[i-1];
     }
 
@@ -132,7 +132,7 @@ int main(int argc, char** argv)
         // Reunir b0 en b_full: paralelo sobre todos los procesos
         MPI_Allgatherv(
             b0.data(), my_nrows, MPI_DOUBLE,
-            b_full.data(), counts_rows.data(), displs_rows.data(), MPI_DOUBLE,
+            b_full.data(), cant_rows.data(), indice_rows.data(), MPI_DOUBLE,
             MPI_COMM_WORLD
         );
 
@@ -177,7 +177,7 @@ int main(int argc, char** argv)
 
         MPI_Allgatherv(
         b0.data(), my_nrows, MPI_DOUBLE,
-        b_full.data(), counts_rows.data(), displs_rows.data(), MPI_DOUBLE,
+        b_full.data(), cant_rows.data(), indice_rows.data(), MPI_DOUBLE,
         MPI_COMM_WORLD
     );
 
