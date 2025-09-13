@@ -1,22 +1,47 @@
 start script
-Sat Sep 13 15:59:53 -03 2025
---------------------------------------------------------------------------
-[[1346,1],0]: A high-performance Open MPI point-to-point messaging module
-was unable to find any relevant network interfaces:
-
-Module: OpenFabrics (openib)
-  Host: n14
-
-Another transport will be used instead, although this may result in
-lower performance.
---------------------------------------------------------------------------
+Sat Sep 13 17:02:59 -03 2025
 Tamaño de la matriz
 Filas: 1000, Columnas: 1000
 
 Rank 0
-Cantidad de filas: 1000
+Cantidad de filas: 125
 Inicio primera fila: 0
+Fin ultima fila: 124
+
+Rank 3
+Cantidad de filas: 125
+Inicio primera fila: 375
+Fin ultima fila: 499
+
+Rank 4
+Cantidad de filas: 125
+Inicio primera fila: 500
+Fin ultima fila: 624
+
+Rank 5
+Cantidad de filas: 125
+Inicio primera fila: 625
+Fin ultima fila: 749
+
+Rank 6
+Cantidad de filas: 125
+Inicio primera fila: 750
+Fin ultima fila: 874
+
+Rank 7
+Cantidad de filas: 125
+Inicio primera fila: 875
 Fin ultima fila: 999
+
+Rank 1
+Cantidad de filas: 125
+Inicio primera fila: 125
+Fin ultima fila: 249
+
+Rank 2
+Cantidad de filas: 125
+Inicio primera fila: 250
+Fin ultima fila: 374
 
 [Iter 0] mu ~ 192.076
 [Iter 10] mu ~ 9.57831
@@ -27,10 +52,17 @@ Fin ultima fila: 999
 
 Valor propio estimado (mu): 9.9147734
 Error |mu - 10|: 0.08522662
-Rank 0 en host n14.ing.puc.cl
+Rank 0 en host n8.ing.puc.cl
+Rank 1 en host n8.ing.puc.cl
+Rank 2 en host n8.ing.puc.cl
+Rank 3 en host n8.ing.puc.cl
+Rank 4 en host n8.ing.puc.cl
+Rank 5 en host n8.ing.puc.cl
+Rank 6 en host n8.ing.puc.cl
+Rank 7 en host n8.ing.puc.cl
 
-real	0m1.122s
-user	0m0.819s
-sys	0m0.097s
+real	0m1.770s
+user	0m8.061s
+sys	0m0.752s
 end script
-Sat Sep 13 15:59:55 -03 2025
+Sat Sep 13 17:03:02 -03 2025
