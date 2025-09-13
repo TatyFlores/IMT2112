@@ -1,5 +1,5 @@
 # Elwin van 't Wout
-# Pontificia Universidad Católica de Chile
+# Pontificia Universidad Catolica de Chile
 # 27-8-2025
 
 # Generate a matrix with real eigenvalues uniformly located in a specific
