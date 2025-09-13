@@ -5,6 +5,7 @@
 #include <new>
 #include <cstdlib>
 #include <cmath>
+#include <iomanip>
 using namespace std;
 
 int main(int argc, char** argv)
@@ -150,7 +151,7 @@ int main(int argc, char** argv)
         // Norma ||y|| en paralelo (Allreduce de suma de cuadrados)
         double local_sum = 0.0;
         for (int i = 0; i < my_nrows; ++i) {
-            local_sum += y_local[i] * y_local[i]
+            local_sum += y_local[i] * y_local[i];
         }
         double global_sum = 0.0;
         MPI_Allreduce(&local_sum, &global_sum, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
@@ -162,7 +163,7 @@ int main(int argc, char** argv)
 
         // Normalizar: b_{k+1} (local) = y_local / ||y||
         for (int i = 0; i < my_nrows; ++i) {
-            b0[i] = y_local[i] / norm_y
+            b0[i] = y_local[i] / norm_y;
         }
 
 
@@ -171,7 +172,7 @@ int main(int argc, char** argv)
 
         double local_dot = 0.0;
         for (int i = 0; i < my_nrows; ++i) {
-            local_dot += b0[i] * y_local[i]
+            local_dot += b0[i] * y_local[i];
         }
         double mu = 0.0;
         MPI_Allreduce(&local_dot, &mu, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
@@ -188,7 +189,7 @@ int main(int argc, char** argv)
     {
         double* sendptr = (my_nrows > 0) ? b0.data() : nullptr;
         MPI_Allgatherv(sendptr, my_nrows, MPI_DOUBLE,
-                       b_full.data(), counts_rows.data(), displs_rows.data(), MPI_DOUBLE,
+                       b_full.data(), cant_rows.data(), indice_rows.data(), MPI_DOUBLE,
                        MPI_COMM_WORLD);
 
         for (int i = 0; i < my_nrows; ++i) {
